@@ -15,9 +15,9 @@ function input(msg) {
 }
 
 const OPTIONS = {
-  host: "192.168.1.2",
-  user: "apskaita",
-  password: "apskaita",
+  host: "127.0.0.1",
+  user: "root",
+  password: "Root1234",
   database: "zmones",
   multipleStatements: true,
 };
@@ -101,7 +101,7 @@ try {
           conn,
           `
         select
-          id, vardas, pavarde, gim_data, alga
+          id, vardas, pavarde, gimimo_data, alga
         from zmones
         order by
           vardas, pavarde`,
@@ -128,7 +128,7 @@ try {
         try {
           r = await query(
             conn,
-            `insert into zmones (vardas, pavarde, gim_data, alga)
+            `insert into zmones (vardas, pavarde, gimimo_data, alga)
             values (?, ?, ?, ?)`,
             [vardas, pavarde, gimData, alga],
           );
